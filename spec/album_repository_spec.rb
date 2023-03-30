@@ -21,4 +21,17 @@ RSpec.describe AlbumRepository do
     expect(albums.first.release_year).to eq '1999'
     expect(albums.first.artist_id).to eq '1'
   end
+
+  it "returns 1st album" do
+    repo = AlbumRepository.new
+    albums = repo.find(1)
+    expect(albums.title).to eq 'Bossanova'
+    expect(albums.release_year).to eq '1999'
+    expect(albums.artist_id).to eq '1'
+  
+  end
+    
+
+
+
 end
