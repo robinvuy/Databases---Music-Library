@@ -113,6 +113,12 @@ class AlbumRepository
     # SELECT id, title, release_year, artist_id FROM albums WHERE id = $1;
 
     # Returns a single album.
+  
+  def create(album) #insert a new album #album is an Album object
+    # INSERT INTO albums (title, release_year, artist_id) VALUES ($1, $2, $3);
+
+    # returns nothing
+
 
  
 6. Write Test Examples
@@ -135,6 +141,26 @@ albums.first.title # => 'Bossanova
 albums.first.release_year #=> '1999'
 albums.first.artist_id # => '1'
 
+# 2 Get a single album 
+
+repo = AlbumRepository.new
+album = repo.find(1)
+album.title => 'Bossanova'
+album.release_year => '1999'
+album.artist_id => '1'
+
+# 3 Insert a new album
+
+repo = AlbumRepository.new
+new_album = Album.new
+new_album.title => 'Trompe le Monde'
+new_album.release_year => '1991'
+new_album.artist_id => '1'
+repo.create(new_album)
+
+all_albums = repo.all
+
+#all_albums should return album list containing new album
 
 7. Reload the SQL seeds before each test run
 

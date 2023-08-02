@@ -30,6 +30,23 @@ RSpec.describe AlbumRepository do
     expect(albums.artist_id).to eq '1'
   
   end
+
+  it "creates and inserts one album" do
+    repo = AlbumRepository.new
+    
+    new_album = Album.new
+    new_album.title = 'Trompe le Monde'
+    new_album.release_year = '1991'
+    new_album.artist_id = '1'
+
+    repo.create(new_album)
+    all_albums = repo.all
+
+    expect(all_albums).to include(new_album)
+    
+    
+  
+  end
     
 
 
